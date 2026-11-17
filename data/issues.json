@@ -10,35 +10,40 @@
     "value": "4,85 mld €",
     "detail": "gen-ago 2026 · −3%",
     "source": "Istat",
-    "url": "https://winenews.it/it/vino-italiano-lexport-recupera-ancora-48-miliardi-di-euro-nei-primi-8-mesi-2026-3-sul-2025_607664/"
+    "url": "https://winenews.it/it/vino-italiano-lexport-recupera-ancora-48-miliardi-di-euro-nei-primi-8-mesi-2026-3-sul-2025_607664/",
+    "why": "Vendite di vino italiano all'estero nei primi otto mesi: in calo, ma agosto riparte."
    },
    {
     "name": "Vino in cantina",
     "value": "47,7 mln hl",
     "detail": "al 31 ottobre · +7,2%",
     "source": "ICQRF",
-    "url": "https://www.vinetur.com/en/pdf/110769/italian-wine-stocks-rose-72-to-477-million-hectoliters-on-oct-31.pdf"
+    "url": "https://www.vinetur.com/en/pdf/110769/italian-wine-stocks-rose-72-to-477-million-hectoliters-on-oct-31.pdf",
+    "why": "Vino stoccato nelle cantine italiane: più scorte da vendere nei prossimi mesi."
    },
    {
     "name": "Export cibo",
     "value": "72,5 mld €",
     "detail": "2025, record · +5%",
     "source": "ISMEA",
-    "url": "https://agenparl.eu/2026/11/12/rapporto-ismea-2026-lagroalimentare-italiano-cresce-ancora-e-si-conferma-motore-strategico-delleconomia-nazionale/"
+    "url": "https://agenparl.eu/2026/11/12/rapporto-ismea-2026-lagroalimentare-italiano-cresce-ancora-e-si-conferma-motore-strategico-delleconomia-nazionale/",
+    "why": "Vendite di cibo e bevande italiane all'estero nel 2025: mai così alte."
    },
    {
     "name": "Turismo del gusto",
     "value": "103 mln",
     "detail": "presenze in un anno",
     "source": "Isnart-Unioncamere",
-    "url": "https://www.qualivita.it/news/turismo-enogastronomico-in-italia-oltre-103-milioni-di-presenze/"
+    "url": "https://www.qualivita.it/news/turismo-enogastronomico-in-italia-oltre-103-milioni-di-presenze/",
+    "why": "Pernottamenti di chi viaggia anche per mangiare e bere bene."
    },
    {
     "name": "Alimentari freschi",
     "value": "+7,5%",
     "detail": "prezzi di ottobre · provvisorio",
     "source": "Istat",
-    "url": "https://www.istat.it/wp-content/uploads/2026/10/CS_Prezzi-al-consumo_Prov_Ottobre2026.pdf"
+    "url": "https://www.istat.it/wp-content/uploads/2026/10/CS_Prezzi-al-consumo_Prov_Ottobre2026.pdf",
+    "why": "Prezzi degli alimentari non lavorati (freschi) rispetto a un anno fa."
    }
   ],
   "lettura": {
@@ -54,22 +59,30 @@
      {
       "text": "Export gen-ago 2026 a 4,85 mld € (−3%), ma agosto torna in positivo: +5,1%.",
       "source": "WineNews su dati Istat, 13/11/2026",
-      "url": "https://winenews.it/it/vino-italiano-lexport-recupera-ancora-48-miliardi-di-euro-nei-primi-8-mesi-2026-3-sul-2025_607664/"
+      "url": "https://winenews.it/it/vino-italiano-lexport-recupera-ancora-48-miliardi-di-euro-nei-primi-8-mesi-2026-3-sul-2025_607664/",
+      "num": "4,85 mld €",
+      "why": "L'export rallenta sull'anno, ma il mese più recente torna a crescere."
      },
      {
       "text": "In cantina al 31/10 ci sono 47,69 mln hl di vino (+7,2%). Il Prosecco vale il 12,5% delle giacenze.",
       "source": "ICQRF via Vinetur, 10/11/2026",
-      "url": "https://www.vinetur.com/en/pdf/110769/italian-wine-stocks-rose-72-to-477-million-hectoliters-on-oct-31.pdf"
+      "url": "https://www.vinetur.com/en/pdf/110769/italian-wine-stocks-rose-72-to-477-million-hectoliters-on-oct-31.pdf",
+      "num": "47,69 mln hl",
+      "why": "Molto vino in cantina: più prodotto disponibile da vendere."
      },
      {
       "text": "USA: sfuso Napa a 12 $/gallone (era 16,25 $). I formati sotto i 750 ml crescono oltre il 7%.",
       "source": "Wine Industry Financial Symposium via Vinetur, 12/11/2026",
-      "url": "https://vinetur.com/en/20261112110905/analysts-say-the-us-wine-market-is-showing-early-signs-of-recovery.html"
+      "url": "https://vinetur.com/en/20261112110905/analysts-say-the-us-wine-market-is-showing-early-signs-of-recovery.html",
+      "num": "12 $/gallone",
+      "why": "Negli USA lo sfuso costa meno e crescono le bottiglie piccole."
      },
      {
       "text": "Cina: il 67% di chi beve vino bio italiano pensa di berne di più nei prossimi 2-3 anni.",
       "source": "Nomisma per Ita.Bio, via Tenute Agricole 24, 13/11/2026 (fonte secondaria)",
-      "url": "https://www.tenuteagricole24.it/trend-del-vino-in-italia-settimana-dal-9-al-13-novembre-2026/"
+      "url": "https://www.tenuteagricole24.it/trend-del-vino-in-italia-settimana-dal-9-al-13-novembre-2026/",
+      "num": "67%",
+      "why": "In Cina il vino bio italiano ha un pubblico che vuole crescere."
      }
     ]
    },
@@ -80,17 +93,23 @@
      {
       "text": "Agroalimentare 2025: 89 mld € di valore aggiunto, il 4,4% del PIL.",
       "source": "Rapporto ISMEA, 12/11/2026",
-      "url": "https://agenparl.eu/2026/11/12/rapporto-ismea-2026-lagroalimentare-italiano-cresce-ancora-e-si-conferma-motore-strategico-delleconomia-nazionale/"
+      "url": "https://agenparl.eu/2026/11/12/rapporto-ismea-2026-lagroalimentare-italiano-cresce-ancora-e-si-conferma-motore-strategico-delleconomia-nazionale/",
+      "num": "89 mld €",
+      "why": "Quanto vale l'agroalimentare nell'economia italiana."
      },
      {
       "text": "Ottobre: alimentari non lavorati +7,5%, carrello della spesa +2,5% (dati provvisori).",
       "source": "Istat, 30/10/2026",
-      "url": "https://www.istat.it/wp-content/uploads/2026/10/CS_Prezzi-al-consumo_Prov_Ottobre2026.pdf"
+      "url": "https://www.istat.it/wp-content/uploads/2026/10/CS_Prezzi-al-consumo_Prov_Ottobre2026.pdf",
+      "num": "+7,5%",
+      "why": "I freschi aumentano più del resto della spesa."
      },
      {
       "text": "Vendite alimentari di settembre: +1,7% in valore, −0,1% in volume. Si spende di più per comprare lo stesso.",
       "source": "Istat via QuiFinanza, 06/11/2026",
-      "url": "https://quifinanza.it/osservatorio-prezzi/inflazione-alimenti-non-trasformati-ottobre-2026/1023147/"
+      "url": "https://quifinanza.it/osservatorio-prezzi/inflazione-alimenti-non-trasformati-ottobre-2026/1023147/",
+      "num": "+1,7%",
+      "why": "Si spende di più per comprare le stesse quantità."
      }
     ]
    },
@@ -102,7 +121,9 @@
      {
       "text": "Ultimo riferimento: a fine ottobre Bari è a 5,05 €/kg; la media nazionale di settembre è 4,81 €/kg (−49,4% sull'anno).",
       "source": "Olio-Extra-Vergine.it su dati ISMEA, 06/11/2026 (fuori finestra)",
-      "url": "https://www.olio-extra-vergine.it/prezzi-olio-aggiornati-al-6-novembre-2026-il-rialzo-di-bari-puo-anticipare-un-inversione-di-tendenza"
+      "url": "https://www.olio-extra-vergine.it/prezzi-olio-aggiornati-al-6-novembre-2026-il-rialzo-di-bari-puo-anticipare-un-inversione-di-tendenza",
+      "num": "4,81 €/kg",
+      "why": "Il prezzo all'origine dell'extravergine è quasi dimezzato in un anno."
      }
     ]
    },
@@ -114,17 +135,23 @@
      {
       "text": "Oltre 103 milioni di presenze in un anno. Il turista del gusto spende 115 € al giorno, contro 102 € della media.",
       "source": "Isnart-Unioncamere via Qualivita, 09/11/2026",
-      "url": "https://www.qualivita.it/news/turismo-enogastronomico-in-italia-oltre-103-milioni-di-presenze/"
+      "url": "https://www.qualivita.it/news/turismo-enogastronomico-in-italia-oltre-103-milioni-di-presenze/",
+      "num": "103 mln",
+      "why": "Il turismo del gusto muove numeri da grande settore."
      },
      {
       "text": "L'enoturismo vale in media il 21% del fatturato delle cantine.",
       "source": "Osservatorio Città del Vino via Wine Meridian, 11/11/2026",
-      "url": "https://www.winemeridian.com/news/enoturismo-esperienze-riconoscibili-sfida-territori-novembre-2026/"
+      "url": "https://www.winemeridian.com/news/enoturismo-esperienze-riconoscibili-sfida-territori-novembre-2026/",
+      "num": "21%",
+      "why": "Per molte cantine l'accoglienza è ormai una fonte di ricavo importante."
      },
      {
       "text": "La ristorazione è il 24,9% della spesa con carta dei turisti stranieri (gen-ago 2026, 16,2 mld € in totale).",
       "source": "Rapporto Nexi via Specchio Economico, 02/11/2026",
-      "url": "https://www.specchioeconomico.com/turismo-italia-spesa-stranieri-2026-rapporto-nexi"
+      "url": "https://www.specchioeconomico.com/turismo-italia-spesa-stranieri-2026-rapporto-nexi",
+      "num": "24,9%",
+      "why": "Un quarto di quanto spendono i turisti stranieri va a tavola."
      }
     ]
    },
@@ -135,12 +162,16 @@
      {
       "text": "Vino negli USA: 1,1 mld € in otto mesi (−8,3%), ma agosto a +21,1%.",
       "source": "WineNews su dati Istat, 13/11/2026",
-      "url": "https://winenews.it/it/vino-italiano-lexport-recupera-ancora-48-miliardi-di-euro-nei-primi-8-mesi-2026-3-sul-2025_607664/"
+      "url": "https://winenews.it/it/vino-italiano-lexport-recupera-ancora-48-miliardi-di-euro-nei-primi-8-mesi-2026-3-sul-2025_607664/",
+      "num": "1,1 mld €",
+      "why": "Negli USA l'export cala sull'anno, ma ad agosto riparte."
      },
      {
       "text": "Corrono Russia (+24,2%) e Cina (+21,7%). Calano Germania e Regno Unito (−5,5%).",
       "source": "WineNews su dati Istat, 13/11/2026",
-      "url": "https://winenews.it/it/vino-italiano-lexport-recupera-ancora-48-miliardi-di-euro-nei-primi-8-mesi-2026-3-sul-2025_607664/"
+      "url": "https://winenews.it/it/vino-italiano-lexport-recupera-ancora-48-miliardi-di-euro-nei-primi-8-mesi-2026-3-sul-2025_607664/",
+      "num": "+24,2%",
+      "why": "Crescono mercati diversi da quelli tradizionali."
      }
     ]
    },
@@ -151,12 +182,16 @@
      {
       "text": "Beve alcolici il 74% della Gen Z, contro il 66% di tre anni fa. Il 53% fa pause programmate.",
       "source": "IWSR via Wine Meridian, 23/10/2026",
-      "url": "https://www.winemeridian.com/english-news/gen-z-drinks-as-much-as-adults-but-wine-loses-ground-september-2026/"
+      "url": "https://www.winemeridian.com/english-news/gen-z-drinks-as-much-as-adults-but-wine-loses-ground-september-2026/",
+      "num": "74%",
+      "why": "Nella Gen Z chi beve alcolici aumenta, ma con più pause."
      },
      {
       "text": "Vino no/low: Gen Z e Millennial sono il 60% degli acquirenti in 8 mercati.",
       "source": "IWSR via Vinetur, 11/06/2026",
-      "url": "https://www.vinetur.com/en/20260611102522/younger-drinkers-propel-global-demand-for-no-and-low-alcohol-wine.html"
+      "url": "https://www.vinetur.com/en/20260611102522/younger-drinkers-propel-global-demand-for-no-and-low-alcohol-wine.html",
+      "num": "60%",
+      "why": "Il vino no/low lo comprano soprattutto i più giovani."
      }
     ]
    }
@@ -201,191 +236,258 @@
   "generazioni_box": {
    "vino": {
     "title": "Il vino per generazione",
-    "intro": "I giovani tornano al vino, e ci arrivano dal ristorante e dal gusto: tra i 18 e i 24 anni beve vino il 47%, contro il 39% del 2011.",
+    "intro": "I giovani si avvicinano al vino, e ci arrivano dal ristorante e dal gusto: tra i 18 e i 24 anni i consumatori di vino sono passati dal 39% al 47% della loro fascia d'età.",
     "cards": [
      {
       "gen": "Gen Z",
+      "take": "Beve meno, ma sceglie con gusto e cura: il vino è parte dell'uscita.",
       "rows": [
-       [
-        "Vino irrinunciabile fuori casa",
-        "97%"
-       ],
-       [
-        "Fuori casa preferisce il ristorante",
-        "86%"
-       ],
-       [
-        "Lo sceglie per il gusto",
-        "50%"
-       ],
-       [
-        "Lo comprerebbe in lattina",
-        "40%"
-       ],
-       [
-        "Legge recensioni online",
-        "61%"
-       ],
-       [
-        "Preferiti",
-        "rossi: Amarone, Barbaresco, Taurasi"
-       ]
+       {
+        "k": "Il vino è un must fuori casa",
+        "v": "97%",
+        "info": "Quota per cui il vino è un «must» fuori casa. Base non dichiarata."
+       },
+       {
+        "k": "Ristorante luogo preferito",
+        "v": "86%",
+        "info": "Il ristorante indicato come luogo preferito per bere vino fuori casa."
+       },
+       {
+        "k": "Primo motivo di scelta: il gusto",
+        "v": "50%",
+        "info": "Quota che indica «mi piace il gusto» come primo criterio."
+       },
+       {
+        "k": "Comprerebbe vino in lattina",
+        "v": "40%",
+        "info": "Intenzione, non acquisto reale: 4 su 10 lo comprerebbero."
+       },
+       {
+        "k": "Comprerebbe vino in pouch",
+        "v": "17%",
+        "info": "Intenzione di acquisto del vino in busta (pouch)."
+       },
+       {
+        "k": "Legge consigli e recensioni online",
+        "v": "61%",
+        "info": "Quota che si informa su siti e blog quando compra vino online."
+       },
+       {
+        "k": "Vini con più conversione all'acquisto",
+        "v": "Amarone, Barbaresco, Taurasi, Bolgheri, Chianti",
+        "info": "Classifica per tasso di conversione all'acquisto (IWSR); Amarone al 68%."
+       }
       ]
      },
      {
       "gen": "Millennial",
+      "take": "Il vino è il compagno delle uscite: ristorante e Prosecco in testa.",
       "rows": [
-       [
-        "Vino irrinunciabile fuori casa",
-        "87%"
-       ],
-       [
-        "Fuori casa preferisce il ristorante",
-        "76%"
-       ],
-       [
-        "Legge recensioni online",
-        "38%"
-       ],
-       [
-        "Preferito",
-        "Prosecco"
-       ]
+       {
+        "k": "Il vino è un must fuori casa",
+        "v": "87%",
+        "info": "Quota per cui il vino è un «must» fuori casa. Base non dichiarata."
+       },
+       {
+        "k": "Ristorante luogo preferito",
+        "v": "76%",
+        "info": "Il ristorante indicato come luogo preferito per bere vino fuori casa."
+       },
+       {
+        "k": "Legge consigli e recensioni online",
+        "v": "38%",
+        "info": "Quota che si informa su siti e blog quando compra vino online."
+       },
+       {
+        "k": "Vino preferito",
+        "v": "Prosecco",
+        "info": "Il vino preferito dai Millennial in su."
+       }
       ]
      },
      {
       "gen": "Gen X",
+      "take": "Fedele ai classici: il Prosecco è il suo vino preferito.",
       "rows": [
-       [
-        "Fuori casa preferisce il ristorante",
-        "~60%"
-       ],
-       [
-        "Preferito",
-        "Prosecco"
-       ],
-       [
-        "Vino irrinunciabile fuori casa",
-        "n.d."
-       ]
+       {
+        "k": "Il vino è un must fuori casa",
+        "v": "n.d.",
+        "info": "Dato non pubblicato dalla fonte."
+       },
+       {
+        "k": "Ristorante luogo preferito",
+        "v": "~60%",
+        "info": "Valore unico per Gen X e Boomer insieme."
+       },
+       {
+        "k": "Vino preferito",
+        "v": "Prosecco",
+        "info": "Il vino più amato da Gen X, Boomer e Millennial."
+       }
       ]
      },
      {
       "gen": "Boomer",
+      "take": "Il vino resta il compagno della tavola: si sceglie per abbinarlo al cibo.",
       "rows": [
-       [
-        "Vino irrinunciabile fuori casa",
-        "64%"
-       ],
-       [
-        "Fuori casa preferisce il ristorante",
-        "~60%"
-       ],
-       [
-        "Lo sceglie per l'abbinamento al cibo",
-        "70%"
-       ],
-       [
-        "Lo comprerebbe in lattina",
-        "4%"
-       ],
-       [
-        "Preferito",
-        "Prosecco"
-       ]
+       {
+        "k": "Il vino è un must fuori casa",
+        "v": "64%",
+        "info": "Quota per cui il vino è un «must» fuori casa. Base non dichiarata."
+       },
+       {
+        "k": "Ristorante luogo preferito",
+        "v": "~60%",
+        "info": "Valore unico per Gen X e Boomer insieme."
+       },
+       {
+        "k": "Primo motivo di scelta: l'abbinamento al cibo",
+        "v": "70%",
+        "info": "Quota per cui il primo motivo è accompagnare il pasto."
+       },
+       {
+        "k": "Comprerebbe vino in lattina",
+        "v": "4%",
+        "info": "Intenzione, non acquisto reale."
+       },
+       {
+        "k": "Comprerebbe vino in pouch",
+        "v": "0%",
+        "info": "Intenzione di acquisto del vino in busta (pouch)."
+       },
+       {
+        "k": "Vino preferito",
+        "v": "Prosecco",
+        "info": "Il vino più amato da Gen X, Boomer e Millennial."
+       }
       ]
      }
     ],
     "sources": [
      {
-      "source": "Osservatorio UIV-Vinitaly su base IWSR, via WineNews, 26/03/2026",
+      "source": "Osservatorio UIV-Vinitaly su base IWSR, Italia, via WineNews, 26/03/2026",
       "url": "https://winenews.it/it/vinitaly-2026-i-consumatori-di-vino-crescono-grazie-ai-giovani-che-amano-i-rossi-ma-bevono-meno_585935/"
      }
     ],
-    "updated": "2026-11-16"
+    "updated": "2026-11-17",
+    "note": "Dati Italia, Osservatorio UIV-Vinitaly su elaborazioni IWSR e survey; la fonte non dichiara base e campione delle percentuali. Nella fonte la Gen Z è «under 28» e i Millennial hanno 29–44 anni."
    },
    "ristorante": {
     "title": "Al ristorante per generazione",
-    "intro": "La Gen Z è il cliente più assiduo del fuori casa. La spesa media per generazione non è rilevata da nessuna fonte pubblica: in Italia lo scontrino medio 2025 è 10,70 € (+3%).",
+    "intro": "La Gen Z è il cliente più assiduo del fuori casa. La spesa media per generazione non è pubblicata in modo completo: per i giovani lo scontrino fuori casa è di 18 € contro 10 € di media; FIPE stima lo scontrino medio 2025 a 10,70 € (+3%).",
     "cards": [
      {
       "gen": "Gen Z",
+      "take": "Esce più di tutti e spende di più: il fuori casa è la sua socialità.",
       "rows": [
-       [
-        "Al ristorante tradizionale ogni giorno (Italia; media UE 5%)",
-        "13%"
-       ],
-       [
-        "Delivery ogni giorno (Italia)",
-        "17%"
-       ],
-       [
-        "Spesa fuori casa alta o molto alta (Italia)",
-        "41%"
-       ],
-       [
-        "Spesa in ristoranti di marca (UE)",
-        "35%"
-       ],
-       [
-        "Visite rispetto al peso in popolazione (UE)",
-        "+39%"
-       ]
+       {
+        "k": "Va al ristorante tradizionale ogni giorno",
+        "v": "13%",
+        "info": "Italia; media europea 5%. Il 17% non ci è mai andato."
+       },
+       {
+        "k": "Usa il delivery ogni giorno",
+        "v": "17%",
+        "info": "Italia; il 29% almeno una volta a settimana."
+       },
+       {
+        "k": "Spesa media alta o molto alta",
+        "v": "41%",
+        "info": "Quota che colloca la sua spesa media in «alta» o «molto alta», Italia."
+       },
+       {
+        "k": "Scontrino fuori casa (giovani)",
+        "v": "18 €",
+        "info": "Contro 10 € di media; la fonte dice «giovani» senza fascia d'età."
+       },
+       {
+        "k": "Quota di spesa nei format di marca",
+        "v": "35%",
+        "info": "Europa, 5 mercati; valore unico Gen Z e Millennial (mercato: 29%)."
+       },
+       {
+        "k": "Visite rispetto al peso in popolazione",
+        "v": "+39%",
+        "info": "Europa, 5 mercati: è il 16% della popolazione ma fa il 39% di visite in più del previsto."
+       }
       ]
      },
      {
       "gen": "Millennial",
+      "take": "Usa tutti i canali insieme e trasforma il pasto da solo in un momento per sé.",
       "rows": [
-       [
-        "Spesa in ristoranti di marca (UE)",
-        "35%"
-       ],
-       [
-        "Uscite in 1 o 2 persone (UE)",
-        "~60%"
-       ],
-       [
-        "Spesa a pasto quando mangia da solo (UE)",
-        "~+70%"
-       ]
+       {
+        "k": "Frequenta più canali insieme",
+        "v": "sì",
+        "info": "Ristoranti, fast food, pub/café e delivery, abitualmente (Italia)."
+       },
+       {
+        "k": "Spesa quando mangia da solo",
+        "v": "+70%",
+        "info": "Circa il 70% in più rispetto allo stesso pasto in compagnia (Europa)."
+       },
+       {
+        "k": "Quota di spesa nei format di marca",
+        "v": "35%",
+        "info": "Europa, 5 mercati; valore unico Gen Z e Millennial (mercato: 29%)."
+       }
       ]
      },
      {
       "gen": "Gen X",
+      "take": "Sceglie per l'offerta e la praticità, più che per il prezzo.",
       "rows": [
-       [
-        "Spesa in ristoranti di marca (UE)",
-        "24%"
-       ],
-       [
-        "Sceglie il locale per il prezzo (UE)",
-        "27%"
-       ],
-       [
-        "Sceglie per l'offerta di prodotti (UE)",
-        "35%"
-       ]
+       {
+        "k": "Sceglie il locale per l'offerta",
+        "v": "35%",
+        "info": "Primo criterio di scelta del ristorante (Europa, 5 mercati)."
+       },
+       {
+        "k": "Sceglie per la praticità",
+        "v": "33%",
+        "info": "Secondo criterio di scelta del ristorante."
+       },
+       {
+        "k": "Sceglie per il prezzo",
+        "v": "27%",
+        "info": "Il prezzo arriva solo terzo tra i criteri."
+       },
+       {
+        "k": "Preoccupato per il costo della vita",
+        "v": "69%",
+        "info": "Quota di Gen X che si dichiara preoccupata (Europa, 5 mercati)."
+       },
+       {
+        "k": "Quota di spesa nei format di marca",
+        "v": "24%",
+        "info": "Europa, 5 mercati; mercato totale 29%."
+       }
       ]
      },
      {
       "gen": "Boomer",
+      "take": "Esce meno e preferisce la tavola tradizionale alle catene e al delivery.",
       "rows": [
-       [
-        "Spesa fuori casa alta o molto alta (Italia)",
-        "26%"
-       ],
-       [
-        "Spesa in ristoranti di marca (UE)",
-        "16%"
-       ],
-       [
-        "Visite rispetto al peso in popolazione (UE)",
-        "indice 60 su 100"
-       ],
-       [
-        "Rinuncia al delivery",
-        "oltre la metà"
-       ]
+       {
+        "k": "Spesa media alta o molto alta",
+        "v": "26%",
+        "info": "Quota che colloca la sua spesa media in «alta» o «molto alta», Italia."
+       },
+       {
+        "k": "Preferisce fare a meno del delivery",
+        "v": "oltre la metà",
+        "info": "Oltre la metà dei Boomer preferisce farne a meno, Italia."
+       },
+       {
+        "k": "Quota di spesa nei format di marca",
+        "v": "16%",
+        "info": "Europa, 5 mercati; mercato totale 29%."
+       },
+       {
+        "k": "Visite rispetto al peso in popolazione",
+        "v": "indice 60",
+        "info": "Europa, 5 mercati; 100 = visite in linea con il peso in popolazione (29%)."
+       }
       ]
      }
     ],
@@ -395,16 +497,27 @@
       "url": "https://www.bain.com/it/about-bain/media-center/press-releases/italy/2023222/Ristorazione-gen-z-sul-podio-della-spesa-in-europa-ma-attesa-contrazione-dei-consumi/"
      },
      {
-      "source": "Circana, 5 mercati europei (Italia inclusa), 12 mesi a giugno 2026, via Italian Food News, 09/10/2026",
+      "source": "Circana, 5 mercati europei (Italia inclusa), via Italian Food News, 09/10/2026",
       "url": "https://www.italianfoodnews.it/2026/10/09/ristorazione-in-europa-i-giovani-cambiano-le-regole-del-mercato/"
      },
      {
       "source": "FIPE, Rapporto Ristorazione 2026 (dati 2025)",
       "url": "https://www.fipe.it/wp-content/uploads/2026/04/Sintesi-per-la-stampa.pdf"
+     },
+     {
+      "source": "Osservatorio UIV-Vinitaly, Italia, via WineNews, 26/03/2026",
+      "url": "https://winenews.it/it/vinitaly-2026-i-consumatori-di-vino-crescono-grazie-ai-giovani-che-amano-i-rossi-ma-bevono-meno_585935/"
      }
     ],
-    "updated": "2026-11-16"
+    "updated": "2026-11-17",
+    "note": "Italia: FIPE-Bain e UIV-Vinitaly. Europa: Circana su Italia, Spagna, Francia, Germania e Regno Unito. Le fonti non dichiarano campione, periodo dei dati per generazione e anni di nascita."
    }
-  }
+  },
+  "summary": [
+   "Export di vino italiano a 4,85 mld € in otto mesi (−3%), ma agosto torna a crescere (+5,1%) e negli USA ad agosto fa +21,1%.",
+   "Giacenze di vino in cantina a 47,7 mln di ettolitri al 31 ottobre (+7,2%).",
+   "Export agroalimentare record nel 2025: 72,5 mld € (+5%).",
+   "Turismo enogastronomico: oltre 103 milioni di presenze; chi viaggia per il gusto spende 115 € al giorno."
+  ]
  }
 ]
