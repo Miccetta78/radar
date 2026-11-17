@@ -28,6 +28,9 @@ jobs:
       - name: Applica le righe al sito
         run: python3 .github/scripts/sync.py /tmp/sheet.csv
 
+      - name: Genera pagine statiche, sitemap e SEO
+        run: python3 .github/scripts/build.py
+
       - name: Pubblica se ci sono modifiche
         env:
           GH_TOKEN: ${{ github.token }}
