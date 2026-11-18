@@ -88,12 +88,18 @@ def clip(text, n=158):
 
 
 def issue_title(it):
+    ct = (it.get("comportamento") or {}).get("title")
+    if ct:
+        return f"Il Comportamento · {ct} · Radar N. {it['number']}"
     names = [h.get("name") for h in it.get("highlights", []) if h.get("name")][:3]
     topic = ", ".join(names).lower() if names else "vino, cibo, olio e turismo del gusto"
     return f"Radar N. {it['number']} · {it['window']}: {topic}"
 
 
 def issue_desc(it):
+    c = it.get("comportamento") or {}
+    if c.get("paragrafo"):
+        return clip(plain(c["paragrafo"]))
     if it.get("summary"):
         return clip(" ".join(it["summary"]))
     if it.get("lettura", {}).get("text"):
@@ -138,7 +144,7 @@ def head(title, desc, url, prefix, og_type="website", extra_ld=None, robots="ind
 
 def page(title, desc, url, prefix, body, nav_current, extra_ld=None, og_type="website", bar=""):
     p = prefix
-    cur = ' aria-current="page"' if nav_current else ""
+    cur_key = nav_current if isinstance(nav_current, str) else ("home" if nav_current else "")
     return f"""<!doctype html>
 <html lang="it">
 <head>
@@ -152,7 +158,7 @@ def page(title, desc, url, prefix, body, nav_current, extra_ld=None, og_type="we
 <body class="v-b">
 <header class="top"><div class="wrap">
   <a class="brand" href="{p}index.html">Radar<span>.</span> Vino Cibo Olio</a>
-  <nav class="nav"><a href="{p}index.html"{cur}>Ultimo numero</a><a href="{p}index.html#archivio">Archivio</a><a class="opt" href="{p}chi-sono.html">Chi sono</a></nav>
+  <nav class="nav">{nav_links(p, cur_key)}</nav>
 </div></header>
 <main id="main">
 {body}
@@ -160,7 +166,7 @@ def page(title, desc, url, prefix, body, nav_current, extra_ld=None, og_type="we
 <footer><div class="wrap">
   <div><a class="brand" href="{p}index.html">Radar<span style="color:var(--accent)">.</span> Vino Cibo Olio</a>
   <p>Settimanale indipendente a cura di Emiliano De Venuti. Fonti pubbliche: istituti di statistica, associazioni, osservatori e stampa di settore. Dove la fonte è secondaria è indicato. I dati provvisori possono essere rivisti.</p></div>
-  <div><div class="lab" style="color:#9a9a96">Esplora</div><p><a href="{p}index.html">Ultimo numero</a><br><a href="{p}index.html#archivio">Archivio</a><br><a href="{p}chi-sono.html">Chi sono</a></p></div>
+  <div><div class="lab" style="color:#9a9a96">Esplora</div><p><a href="{p}index.html">Ultimo numero</a><br><a href="{p}il-comportamento.html">Il Comportamento</a><br><a href="{p}letture/index.html">Letture</a><br><a href="{p}index.html#archivio">Archivio</a><br><a href="{p}chi-sono.html">Chi sono</a></p></div>
   <div><div class="lab" style="color:#9a9a96">Legal</div><p><a href="{p}privacy.html">Privacy</a><br>emilianodevenuti.it © {datetime_year()}</p></div>
 </div></footer>
 <div class="bar"><div class="wrap"><span><b>Ogni lunedì</b> <span class="opt">· {e(bar)}</span></span><a href="{p}index.html#archivio">Archivio →</a></div></div>
@@ -173,18 +179,115 @@ def page(title, desc, url, prefix, body, nav_current, extra_ld=None, og_type="we
 _YEAR = ["2026"]
 
 
+def nav_links(p, cur_key=""):
+    items = [("home", "index.html", "Ultimo numero", ""), ("comp", "il-comportamento.html", "Il Comportamento", ""),
+             ("letture", "letture/index.html", "Letture", ""), ("arch", "index.html#archivio", "Archivio", "opt"),
+             ("chi", "chi-sono.html", "Chi sono", "opt")]
+    out = []
+    for k, href, lbl, cls in items:
+        a = ' aria-current="page"' if k == cur_key else ""
+        c = f' class="{cls}"' if cls else ""
+        out.append(f'<a href="{p}{href}"{c}{a}>{lbl}</a>')
+    return "".join(out)
+
+
 def datetime_year():
     return _YEAR[0]
 
 
+LEVE = [("salute", "Salute e benessere"), ("tempo", "Tempo e stile di vita"), ("digitale", "Comunicazione e digitale"),
+        ("valore", "Prezzi e valore"), ("socialita", "Socialità ed esperienze")]
+LEVE_DESC = {
+    "salute": "Si beve e si mangia pensando di più a come si sta.",
+    "tempo": "Meno tempo, ritmi diversi, occasioni nuove.",
+    "digitale": "Si scopre, si sceglie e si compra passando dallo schermo.",
+    "valore": "Si spende con più attenzione e si cerca il senso di quello che si paga.",
+    "socialita": "Conta il momento condiviso più del prodotto in sé.",
+}
+
+
+def rich(text):
+    """Testo con **grassetto**: escape HTML e poi grassetto."""
+    out = []
+    for par in re.split(r"\n\s*\n", (text or "").strip()):
+        par = e(par.strip())
+        par = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", par)
+        if par:
+            out.append(f"<p>{par}</p>")
+    return "".join(out)
+
+
+def plain(text):
+    return re.sub(r"\*\*(.+?)\*\*", r"\1", text or "")
+
+
+def leve_html(active, prefix):
+    active = set(active or [])
+    chips = "".join(f'<li class="leva{" on" if k in active else ""}">{e(lbl)}</li>' for k, lbl in LEVE)
+    return (f'<div class="leve"><div class="lab">Le leve del cambiamento</div><ul>{chips}</ul>'
+            f'<a class="more" href="{prefix}il-comportamento.html">Cos\'è Il Comportamento →</a></div>')
+
+
 def render_issue(it, issues, prefix):
     h = []
+    c = it.get("comportamento") or {}
+    title = c.get("title") or "I numeri della settimana su vino, cibo, olio e turismo del gusto."
+    sub = c.get("sottotitolo") or "Ogni lunedì i numeri del mercato e la lettura di come cambia chi compra. Ogni dato con fonte e link."
     h.append('<section class="hero"><div class="wrap">')
-    h.append(f'<div class="kick"><span class="pill">N. {e(it["number"])}</span><span class="lab">{e(fmt(it["date"]))} · settimana {e(it["window"])}</span></div>')
-    h.append('<h1>I numeri della settimana su <em>vino, cibo, olio</em> e turismo del gusto.</h1>')
-    h.append('<p class="sub">Ogni lunedì i numeri del mercato e la lettura di come cambia chi compra. Ogni dato con fonte e link.</p>')
+    h.append(f'<div class="kick"><span class="pill">Il Comportamento · N. {e(it["number"])}</span><span class="lab">{e(fmt(it["date"]))} · settimana {e(it["window"])}</span></div>')
+    h.append(f'<h1>{e(title)}</h1>')
+    h.append(f'<p class="sub">{e(sub)}</p>')
     h.append(f'<div class="by">A cura di <b>{AUTHOR}</b></div>')
     h.append('</div></section>')
+
+    if c:
+        body = c.get("paragrafo") or c.get("intro") or ""
+        h.append('<div class="wrap"><section class="comp" id="comportamento"><div class="lab">Il Comportamento della settimana</div>'
+                 f'<div class="ctext">{rich(body)}<div class="sign">{AUTHOR}{DRAFT if c.get("draft") else ""}</div>'
+                 '<p class="cnote">I numeri citati sono qui sotto, nelle prove, con fonte e link.</p></div>'
+                 f'{leve_html(c.get("leve"), prefix)}</section></div>')
+        if c.get("settori"):
+            h.append('<div class="wrap"><section class="focus" id="focus"><div class="fhead"><div class="lab">Cosa cambia, settore per settore</div></div><div class="fgrid">')
+            for x in c.get("settori", []):
+                h.append(f'<article class="fcard" style="--sc:var(--c-{e(x.get("key"))})"><h3>{e(x.get("title"))}</h3><div class="lab">Cosa cambia</div><p>{e(x.get("cambia"))}</p>'
+                         f'<div class="lab">L’opportunità</div><p class="op">{e(x.get("opportunita"))}</p></article>')
+            h.append("</div></section></div>")
+
+    gb = it.get("generazioni_box") or {}
+    for k in ("vino", "ristorante"):
+        g = gb.get(k)
+        if not g:
+            continue
+        lab = "Consumo di vino" if k == "vino" else "Fuori casa"
+        h.append(f'<div class="wrap"><section class="gens gens-{k}"><div class="ghead"><div class="lab">{lab} · per generazione</div><h2>{e(g.get("title"))}</h2>'
+                 + (f'<p>{e(g["intro"])}</p>' if g.get("intro") else "") + '</div><div class="ggrid">')
+        for cd in g.get("cards", []):
+            yrs = gen_years(cd.get("gen"), int(it["date"][:4]))
+            h.append(f'<article class="gcard"><h3>{e(cd.get("gen"))}</h3>' + (f'<div class="gyears">{e(yrs)}</div>' if yrs else ""))
+            if cd.get("take"):
+                h.append(f'<p class="take">{e(cd["take"])}</p>')
+            h.append("<dl>")
+            for r in cd.get("rows", []):
+                k_, v_, info = row(r)
+                cls = ("nd " if v_ == "n.d." else "") + ("nw" if len(str(v_ or "")) <= 12 else "")
+                tip = f' title="{e(info)}"' if info else ""
+                h.append(f'<div class="{cls.strip()}"{tip}><dt>{e(k_)}</dt><dd>{e(v_)}</dd></div>')
+            h.append("</dl>")
+            infos = [(row(r)[0], row(r)[2]) for r in cd.get("rows", []) if row(r)[2]]
+            if infos:
+                h.append('<details class="why"><summary>Cosa significano i dati</summary><ul>'
+                         + "".join(f"<li><b>{e(k_)}</b>: {e(i_)}</li>" for k_, i_ in infos) + "</ul></details>")
+            h.append("</article>")
+        h.append("</div>")
+        if g.get("note"):
+            h.append(f'<p class="gnote">{e(g["note"])}</p>')
+        h.append(f'<p class="gnote">{e(GEN_NOTE)}</p>')
+        src = " · ".join(link(s.get("url"), s.get("source")) for s in g.get("sources", []))
+        upd = f' · <span>ultimo controllo {e(fmt(g["updated"]))}</span>' if g.get("updated") else ""
+        h.append(f'<div class="gsrc">Fonti: {src}{upd}</div></section></div>')
+
+    h.append('<div class="wrap"><section class="proofs" id="prove"><div class="lab">Le prove</div><h2>I numeri della settimana</h2>'
+             '<p class="psub">Ogni dato con fonte, periodo e link. Tocca un settore per aprirlo.</p></section></div>')
 
     if it.get("summary"):
         h.append('<div class="wrap"><section class="summary"><div class="lab">In sintesi</div><ul>')
@@ -200,52 +303,10 @@ def render_issue(it, issues, prefix):
                      + f'<div class="s">{link(n.get("url"), n.get("source"))}</div></div>')
         h.append("</div></div>")
 
-    gb = it.get("generazioni_box") or {}
-    for k in ("vino", "ristorante"):
-        g = gb.get(k)
-        if not g:
-            continue
-        lab = "Consumo di vino" if k == "vino" else "Fuori casa"
-        h.append(f'<div class="wrap"><section class="gens gens-{k}"><div class="ghead"><div class="lab">{lab} · per generazione</div><h2>{e(g.get("title"))}</h2>'
-                 + (f'<p>{e(g["intro"])}</p>' if g.get("intro") else "") + '</div><div class="ggrid">')
-        for c in g.get("cards", []):
-            yrs = gen_years(c.get("gen"), int(it["date"][:4]))
-            h.append(f'<article class="gcard"><h3>{e(c.get("gen"))}</h3>' + (f'<div class="gyears">{e(yrs)}</div>' if yrs else ""))
-            if c.get("take"):
-                h.append(f'<p class="take">{e(c["take"])}</p>')
-            h.append("<dl>")
-            for r in c.get("rows", []):
-                k_, v_, info = row(r)
-                cls = ("nd " if v_ == "n.d." else "") + ("nw" if len(str(v_ or "")) <= 12 else "")
-                tip = f' title="{e(info)}"' if info else ""
-                h.append(f'<div class="{cls.strip()}"{tip}><dt>{e(k_)}</dt><dd>{e(v_)}</dd></div>')
-            h.append("</dl>")
-            infos = [(row(r)[0], row(r)[2]) for r in c.get("rows", []) if row(r)[2]]
-            if infos:
-                h.append('<details class="why"><summary>Cosa significano i dati</summary><ul>'
-                         + "".join(f"<li><b>{e(k_)}</b>: {e(i_)}</li>" for k_, i_ in infos) + "</ul></details>")
-            h.append("</article>")
-        h.append("</div>")
-        if g.get("note"):
-            h.append(f'<p class="gnote">{e(g["note"])}</p>')
-        h.append(f'<p class="gnote">{e(GEN_NOTE)}</p>')
-        src = " · ".join(link(s.get("url"), s.get("source")) for s in g.get("sources", []))
-        upd = f' · <span>ultimo controllo {e(fmt(g["updated"]))}</span>' if g.get("updated") else ""
-        h.append(f'<div class="gsrc">Fonti: {src}{upd}</div></section></div>')
-
     if it.get("lettura"):
         L = it["lettura"]
-        h.append(f'<div class="wrap"><section class="read"><div class="lab">La lettura della settimana</div><div><h2>{e(L.get("title"))}</h2><p>{e(L.get("text"))}</p>'
+        h.append(f'<div class="wrap"><section class="read"><div class="lab">La lettura dei mercati</div><div><h2>{e(L.get("title"))}</h2><p>{e(L.get("text"))}</p>'
                  f'<div class="sign">{AUTHOR}{DRAFT if L.get("draft") else ""}</div></div></section></div>')
-
-    if it.get("comportamento"):
-        c = it["comportamento"]
-        h.append(f'<div class="wrap"><section class="focus" id="focus"><div class="fhead"><div class="lab">Il focus · Consumatori e società</div><h2>{e(c.get("title"))}</h2><p>{e(c.get("intro"))}</p>'
-                 f'<div class="sign">{AUTHOR}{DRAFT if c.get("draft") else ""}</div></div><div class="fgrid">')
-        for x in c.get("settori", []):
-            h.append(f'<article class="fcard" style="--sc:var(--c-{e(x.get("key"))})"><h3>{e(x.get("title"))}</h3><div class="lab">Cosa cambia</div><p>{e(x.get("cambia"))}</p>'
-                     f'<div class="lab">L’opportunità</div><p class="op">{e(x.get("opportunita"))}</p></article>')
-        h.append("</div></section></div>")
 
     secs = it.get("sections", [])
     h.append('<div class="wrap"><nav class="toc" aria-label="Sezioni">')
@@ -254,7 +315,10 @@ def render_issue(it, issues, prefix):
     h.append("</nav>")
     for i, s in enumerate(secs):
         key = s.get("key") or str(i)
-        h.append(f'<section class="sec" id="s-{e(key)}" style="--sc:var(--c-{e(s.get("key") or "export")})"><div class="h"><div class="no">{no(i)}</div><h3>{e(s.get("title"))}</h3></div><div>')
+        n_items = len(s.get("items") or [])
+        cnt = f"{n_items} dat{'o' if n_items == 1 else 'i'}" if n_items else "nessuna novità"
+        h.append(f'<details class="secd" id="s-{e(key)}" style="--sc:var(--c-{e(s.get("key") or "export")})">'
+                 f'<summary><span class="no">{no(i)}</span><h3>{e(s.get("title"))}</h3><span class="cnt">{cnt}</span></summary><div class="secb">')
         if s.get("abstract"):
             h.append(f'<p class="abs">{e(s["abstract"])}</p>')
         if s.get("none"):
@@ -267,12 +331,13 @@ def render_issue(it, issues, prefix):
             h.append("</ul>")
         if s.get("interpretation"):
             h.append(f'<p class="abs interp">{e(s["interpretation"])}</p>')
-        h.append("</div></section>")
+        h.append("</div></details>")
     h.append("</div>")
 
     h.append('<div class="wrap"><section class="arch" id="archivio"><h2>Archivio</h2><ol>')
     for x in issues:
-        h.append(f'<li><a href="{prefix}numeri/{e(x["id"])}.html"><span class="t">N. {e(x["number"])} · {e(fmt(x["date"]))}</span><span class="w">{e(x["window"])}</span></a></li>')
+        xt = (x.get("comportamento") or {}).get("title") or x["window"]
+        h.append(f'<li><a href="{prefix}numeri/{e(x["id"])}.html"><span class="t">N. {e(x["number"])} · {e(fmt(x["date"]))}</span><span class="w">{e(xt)}</span></a></li>')
     h.append("</ol></section></div>")
     return "\n".join(h)
 
@@ -313,6 +378,98 @@ def inject_head(path, title, desc, url, robots="index,follow"):
     write(path, s)
 
 
+def render_blocks(blocks):
+    out = []
+    for b in blocks:
+        if b.get("h"):
+            out.append(f"<h2>{e(b['h'])}</h2>")
+        if b.get("p"):
+            out.append(rich(b["p"]))
+        if b.get("ul"):
+            out.append("<ul>" + "".join(f"<li>{rich(x)[3:-4]}</li>" for x in b["ul"]) + "</ul>")
+    return "".join(out)
+
+
+def build_static_pages(issues):
+    letture = []
+    lp = os.path.join(ROOT, "data", "letture.json")
+    if os.path.exists(lp):
+        letture = json.load(open(lp, encoding="utf-8"))
+    letture.sort(key=lambda x: x.get("date", ""), reverse=True)
+    bar = f"N. {issues[0]['number']} · {issues[0]['window']}" if issues else ""
+
+    # Pagina manifesto
+    prosecco = next((x for x in letture if x["slug"] == "perche-tutti-dicono-prosecco"), None)
+    leve = "".join(f'<li><b>{e(lbl)}</b><span>{e(LEVE_DESC[k])}</span></li>' for k, lbl in LEVE)
+    link_p = (f'<p><a class="more" href="letture/{prosecco["slug"]}.html">Leggi: {e(prosecco["title"])} →</a></p>' if prosecco else "")
+    body = f"""<section class="hero"><div class="wrap"><div class="kick"><span class="pill">Il Comportamento</span></div>
+<h1>Come cambia chi compra, quando cambia la società.</h1>
+<p class="sub">Ogni lunedì leggo i numeri di vino, cibo, olio e turismo del gusto per capire una cosa sola: come cambia il comportamento delle persone, e perché.</p>
+<div class="by">di <b>{AUTHOR}</b></div></div></section>
+<div class="wrap"><article class="essay">
+<h2>I numeri veri li fanno le persone normali</h2>
+<p>Chi lavora nel vino parla di vitigni, territori e metodi. Chi lo beve sceglie per gusto, occasione e prezzo. I dati lo dicono chiaramente: per la maggior parte delle generazioni il vino preferito è il Prosecco. Per questo ogni mia lettura parte da come compra e da cosa immagina la persona comune, non da come ragiona il settore.</p>
+{link_p}
+<h2>Le 5 leve del cambiamento</h2>
+<p>Ogni settimana segno quali sono in gioco. Sono il filo che lega i numeri alla vita di tutti i giorni.</p>
+<ul class="levelist">{leve}</ul>
+<h2>Come leggo i dati</h2>
+<ul>
+<li>Ogni cambiamento è un'evoluzione a cui chi produce può adattarsi, mai solo una crisi.</li>
+<li>Ogni numero ha fonte, periodo e area. Se un dato non c'è, lo scrivo.</li>
+<li>Parto da chi compra, non da chi produce.</li>
+<li>Poche parole, chiare: si capisce al primo sguardo.</li>
+</ul>
+<p><a class="more" href="index.html#comportamento">Leggi Il Comportamento di questa settimana →</a></p>
+</article></div>"""
+    ttl = "Il Comportamento — come cambiano i consumi quando cambia la società · Emiliano De Venuti"
+    dsc = ("Il Comportamento: la lettura settimanale di Emiliano De Venuti su come cambia il consumatore di vino, cibo e olio "
+           "in funzione del cambiamento sociale. Le 5 leve, il metodo, i numeri con fonte.")
+    write("il-comportamento.html", page(ttl, dsc, SITE + "/il-comportamento.html", "", body, "comp", None, "website", bar))
+
+    # Letture: elenco
+    items = "".join(f'<li><a href="{x["slug"]}.html"><span class="t">{e(x["title"])}</span>'
+                    f'<span class="w">{e(x.get("subtitle", ""))} · {e(fmt(x["date"]))} · {x.get("minutes", 2)} min</span></a></li>' for x in letture)
+    body = f"""<section class="hero"><div class="wrap"><div class="kick"><span class="pill">Letture</span></div>
+<h1>Le letture che non scadono.</h1>
+<p class="sub">Approfondimenti brevi per capire i comportamenti che stanno sotto ai numeri di ogni settimana.</p>
+<div class="by">di <b>{AUTHOR}</b></div></div></section>
+<div class="wrap"><section class="arch"><ol>{items}</ol></section></div>"""
+    write("letture/index.html", page("Letture — Il Comportamento · Emiliano De Venuti",
+                                     "Approfondimenti di Emiliano De Venuti sul comportamento del consumatore di vino, cibo e olio.",
+                                     SITE + "/letture/index.html", "../", body, "letture", None, "website", bar))
+
+    # Letture: singole pagine
+    for x in letture:
+        url = f"{SITE}/letture/{x['slug']}.html"
+        src = " · ".join(link(s.get("url"), s.get("source")) for s in x.get("sources", []))
+        body = f"""<section class="hero"><div class="wrap"><div class="kick"><span class="pill">Letture</span><span class="lab">{e(fmt(x["date"]))} · {x.get("minutes", 2)} minuti</span></div>
+<h1>{e(x["title"])}</h1>
+<p class="sub">{e(x.get("subtitle", ""))}</p>
+<div class="by">Una lettura di <b>{AUTHOR}</b></div></div></section>
+<div class="wrap"><article class="essay">{render_blocks(x.get("blocks", []))}
+<div class="sign">{AUTHOR}</div>
+<p class="gsrc">Fonti: {src}</p>
+<p><a class="more" href="../il-comportamento.html">Cos'è Il Comportamento →</a></p></article></div>"""
+        ld = {"@context": "https://schema.org", "@type": "Article", "headline": x["title"], "description": x.get("description", ""),
+              "url": url, "mainEntityOfPage": url, "inLanguage": "it-IT", "datePublished": x["date"],
+              "author": {"@type": "Person", "name": AUTHOR, "url": SITE + "/chi-sono.html"},
+              "publisher": {"@type": "Person", "name": AUTHOR}, "image": SITE + "/assets/og.png"}
+        write(f"letture/{x['slug']}.html", page(f"{x['title']} — {x.get('subtitle', '')} · Emiliano De Venuti",
+                                                 x.get("description", x.get("subtitle", "")), url, "../", body, "letture", ld, "article", bar))
+    return letture
+
+
+def fix_nav(path):
+    full = os.path.join(ROOT, path)
+    if not os.path.exists(full):
+        return
+    s = open(full, encoding="utf-8").read()
+    s2 = re.sub(r'<nav class="nav">.*?</nav>', '<nav class="nav">' + nav_links("", "chi" if path == "chi-sono.html" else "") + "</nav>", s, count=1, flags=re.S)
+    if s2 != s:
+        write(path, s2)
+
+
 def main():
     issues = json.load(open(os.path.join(ROOT, "data", "issues.json"), encoding="utf-8"))
     issues.sort(key=lambda i: (i.get("date", ""), i.get("number", 0)), reverse=True)
@@ -331,11 +488,14 @@ def main():
     if issues:
         it = issues[0]
         body = render_issue(it, issues, "")
-        title = "Radar · Vino Cibo Olio — mercato del vino, olio, cibo e turismo del gusto ogni lunedì"
+        title = "Il Comportamento · Radar Vino Cibo Olio — come cambiano i consumi di vino, cibo e olio, ogni lunedì"
         write("index.html", page(title, DESC_SITE, SITE + "/", "", body, True,
                                  article_ld(it, f"{SITE}/numeri/{it['id']}.html", issue_title(it), issue_desc(it)),
                                  "website", f"N. {it['number']} · {it['window']}"))
 
+    letture = build_static_pages(issues)
+    for pth in ("chi-sono.html", "privacy.html", "404.html"):
+        fix_nav(pth)
     inject_head("chi-sono.html", "Chi sono — Emiliano De Venuti · Radar Vino Cibo Olio",
                 "Emiliano De Venuti cura il Radar: ogni lunedì numeri e lettura del mercato di vino, cibo, olio d'oliva e turismo del gusto in Italia.",
                 SITE + "/chi-sono.html")
@@ -345,6 +505,8 @@ def main():
 
     urls = [(SITE + "/", issues[0]["date"] if issues else None, "1.0")]
     urls += [(f"{SITE}/numeri/{x['id']}.html", x["date"], "0.8") for x in issues]
+    urls += [(SITE + "/il-comportamento.html", None, "0.9"), (SITE + "/letture/index.html", letture[0]["date"] if letture else None, "0.7")]
+    urls += [(f"{SITE}/letture/{x['slug']}.html", x["date"], "0.8") for x in letture]
     urls += [(SITE + "/chi-sono.html", None, "0.5"), (SITE + "/privacy.html", None, "0.2")]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, d, p in urls:
