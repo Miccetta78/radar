@@ -231,7 +231,15 @@
      "opportunita": "Parlare la sua lingua: convivialità, mixology, formati e prezzi d'ingresso."
     }
    ],
-   "draft": true
+   "draft": true,
+   "sottotitolo": "Il consumatore non smette di comprare: cambia il motivo per cui lo fa.",
+   "paragrafo": "La spesa alimentare cresce in valore (**+1,7%**) a volumi fermi: si sceglie con più attenzione, anche perché i freschi costano il **7,5%** in più. Nel vino la Gen Z che beve alcolici sale al **74%** (era il 66% tre anni fa), ma con più pause e in occasioni diverse, mentre negli USA crescono le bottiglie sotto i 750 ml (**+7%**). E chi viaggia per mangiare e bere spende **115 €** al giorno, contro 102 € della media.\n\nDietro c'è un cambiamento sociale chiaro: il tempo vale di più, il benessere conta, si vuole conoscere chi produce. Per chi produce è un'occasione: proposte pensate per il momento giusto, valore spiegato in modo semplice, cantine e frantoi aperti come destinazione.",
+   "leve": [
+    "salute",
+    "tempo",
+    "valore",
+    "socialita"
+   ]
   },
   "generazioni_box": {
    "vino": {
