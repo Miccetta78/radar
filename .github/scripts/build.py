@@ -23,6 +23,22 @@ KEYWORDS = ("mercato del vino, consumi di vino in Italia, export vino italiano, 
 DESC_SITE = ("Ogni lunedì i numeri del mercato del vino, dell'agroalimentare, dell'olio d'oliva "
              "e del turismo del gusto in Italia, con la lettura di come cambiano i consumatori, "
              "generazione per generazione. Ogni dato con fonte e link. A cura di Emiliano De Venuti.")
+# Anni di nascita: definizione standard Pew Research Center.
+GENS = {"gen z": (1997, 2012), "millennial": (1981, 1996), "gen x": (1965, 1980), "boomer": (1946, 1964)}
+GEN_NOTE = ("Anni di nascita secondo la definizione standard (Pew Research Center); età calcolate sull'anno del numero, "
+            "solo maggiorenni. Le fonti possono usare fasce d'età diverse: se succede è indicato nella nota.")
+
+
+def gen_years(name, year):
+    key = (name or "").lower().replace("millennials", "millennial").replace("baby boomer", "boomer").replace("boomers", "boomer")
+    span = GENS.get(key.strip())
+    if not span:
+        return ""
+    a, b = span
+    lo, hi = max(18, year - b), year - a
+    return f"nati {a}–{b} · {lo}–{hi} anni"
+
+
 DRAFT = ' · <span class="draft">bozza da approvare</span>'
 ICON = ("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E"
         "%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23fb3910%27/%3E%3Ctext x=%2716%27 "
@@ -192,7 +208,8 @@ def render_issue(it, issues, prefix):
         h.append(f'<div class="wrap"><section class="gens gens-{k}"><div class="ghead"><div class="lab">{lab} · per generazione</div><h2>{e(g.get("title"))}</h2>'
                  + (f'<p>{e(g["intro"])}</p>' if g.get("intro") else "") + '</div><div class="ggrid">')
         for c in g.get("cards", []):
-            h.append(f'<article class="gcard"><h3>{e(c.get("gen"))}</h3>')
+            yrs = gen_years(c.get("gen"), int(it["date"][:4]))
+            h.append(f'<article class="gcard"><h3>{e(c.get("gen"))}</h3>' + (f'<div class="gyears">{e(yrs)}</div>' if yrs else ""))
             if c.get("take"):
                 h.append(f'<p class="take">{e(c["take"])}</p>')
             h.append("<dl>")
@@ -210,6 +227,7 @@ def render_issue(it, issues, prefix):
         h.append("</div>")
         if g.get("note"):
             h.append(f'<p class="gnote">{e(g["note"])}</p>')
+        h.append(f'<p class="gnote">{e(GEN_NOTE)}</p>')
         src = " · ".join(link(s.get("url"), s.get("source")) for s in g.get("sources", []))
         upd = f' · <span>ultimo controllo {e(fmt(g["updated"]))}</span>' if g.get("updated") else ""
         h.append(f'<div class="gsrc">Fonti: {src}{upd}</div></section></div>')
