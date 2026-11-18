@@ -132,6 +132,7 @@ def head(title, desc, url, prefix, og_type="website", extra_ld=None, robots="ind
 <meta name="twitter:image" content="{SITE}/assets/og.png">
 <link rel="sitemap" type="application/xml" href="{SITE}/sitemap.xml">
 <script type="application/ld+json">{ld_txt}</script>
+<script src="{SITE}/assets/consent.js" defer></script>
 <!--/seo-->"""
 
 
