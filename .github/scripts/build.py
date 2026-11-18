@@ -39,7 +39,7 @@ def gen_years(name, year):
     return f"nati {a}–{b} · {lo}–{hi} anni"
 
 
-DRAFT = ' · <span class="draft">bozza da approvare</span>'
+DRAFT = ""  # pubblicazione automatica firmata, senza etichetta bozza - 18/11/2026
 ICON = ("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E"
         "%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23fb3910%27/%3E%3Ctext x=%2716%27 "
         "y=%2723%27 font-family=%27Arial%27 font-weight=%27900%27 font-size=%2720%27 fill=%27white%27 "
