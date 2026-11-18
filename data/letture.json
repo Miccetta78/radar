@@ -1,0 +1,19 @@
+[
+ {
+  "slug": "perche-tutti-dicono-prosecco",
+  "title": "Perché tutti dicono Prosecco",
+  "subtitle": "Quando un nome diventa il vino.",
+  "date": "2026-11-18",
+  "minutes": 2,
+  "description": "Perché per molti «Prosecco» significa ormai bollicina italiana, cosa dicono i dati sulle preferenze delle generazioni e cosa può imparare chi racconta il vino.",
+  "blocks": [
+   {"h": "Un nome diventato parola comune", "p": "Capita spesso: al ristorante si ordina «un Prosecco» e nel bicchiere arriva un Franciacorta, un Trento o un altro spumante. Nessuno se ne accorge, e non è un errore. Per molte persone «Prosecco» non è più un vino preciso: è la parola che indica la bollicina italiana. Come lo Scottex per la carta da cucina."},
+   {"h": "Cosa dicono i numeri", "p": "Secondo l'Osservatorio UIV-Vinitaly il Prosecco è il vino preferito dai Millennial in su. E quando si chiede perché si sceglie un vino, le risposte sono semplici: la Gen Z cerca prima di tutto il gusto (**50%**), i Boomer un vino che accompagni il pasto (**70%**). Nessuno parte dal vitigno o dal metodo di produzione."},
+   {"h": "Due lingue diverse", "p": "Il settore racconta il vino con la lingua dei tecnici: rese, affinamenti, cru, storie di famiglia. La maggioranza delle persone usa un'altra lingua, fatta di momenti, piacere e prezzo giusto. Il problema non è il vino: è la traduzione. Spesso spieghiamo il vino a chi lo conosce già."},
+   {"h": "Cosa ha fatto bene il Prosecco", "ul": ["Un nome facile da dire e da ricordare.", "Un momento chiaro: l'aperitivo, la festa, lo stare insieme.", "Un prezzo d'ingresso che non mette paura.", "Un gesto riconoscibile, che si condivide."]},
+   {"h": "Una porta, non un muro", "p": "Il Prosecco non è un concorrente da battere: è la porta da cui la maggior parte delle persone entra nel mondo del vino. Chi produce altro può partire da lì e offrire il passo successivo, con parole altrettanto semplici. E i più giovani sono pronti a farlo: tra i vini che la Gen Z compra più spesso dopo averli conosciuti ci sono Amarone, Barbaresco e Taurasi."},
+   {"h": "La mia lettura", "p": "Il consumatore non è distratto: ha scelto la semplicità. È un cambiamento sociale, fatto di meno tempo, più socialità leggera e più attenzione al piacere. Tocca a chi produce e a chi racconta adattarsi, cambiando lingua."}
+  ],
+  "sources": [{"source": "Osservatorio UIV-Vinitaly su base IWSR, Italia, presentato il 26/03/2026 (via WineNews)", "url": "https://winenews.it/it/vinitaly-2026-i-consumatori-di-vino-crescono-grazie-ai-giovani-che-amano-i-rossi-ma-bevono-meno_585935/"}]
+ }
+]
