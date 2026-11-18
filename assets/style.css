@@ -212,3 +212,55 @@ footer p{margin:8px 0 0;max-width:46ch}
 .gcard .why ul{margin:6px 0 0;padding-left:18px}
 .gcard .why li{margin:3px 0}
 .gcard .gyears{margin:2px 0 6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Il Comportamento — paragrafo, leve, prove, letture */
+.comp{display:grid;grid-template-columns:1fr 300px;gap:40px;margin:56px 0 40px;align-items:start}
+.comp>.lab{grid-column:1/-1;margin-bottom:-24px}
+.comp .ctext p{font-size:21px;line-height:1.55;margin:0 0 16px;max-width:62ch}
+.comp .ctext strong{color:var(--accent);font-weight:700}
+.comp .sign{margin-top:6px;font-size:15px;font-weight:600}
+.comp .ctext p.cnote{font-size:13px;color:var(--muted);margin:10px 0 0}
+.leve{border-top:6px solid var(--ink);padding-top:16px}
+.leve ul{list-style:none;margin:12px 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
+.leva{font-size:14px;font-weight:600;padding:9px 14px;border-radius:999px;background:var(--grey);color:#9a9a96}
+.leva.on{background:var(--ink);color:#fff}
+.more{display:inline-block;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none}
+.more:hover{text-decoration:underline}
+.proofs{margin:56px 0 8px;border-top:2px solid var(--ink);padding-top:28px}
+.proofs h2{font-family:var(--f-brand);font-weight:800;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.02em;line-height:1.05;margin:8px 0 6px;text-transform:uppercase}
+.proofs .psub{margin:0;color:var(--muted);font-size:16px}
+.secd{border-top:1px solid var(--line);scroll-margin-top:80px}
+.secd summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:12px;padding:22px 0}
+.secd summary::-webkit-details-marker{display:none}
+.secd .no{font-family:var(--f-brand);font-weight:800;font-size:15px;letter-spacing:.08em;color:var(--sc)}
+.secd h3{font-family:var(--f-brand);font-weight:800;font-size:26px;line-height:1.05;letter-spacing:-.02em;margin:0;text-transform:uppercase;color:var(--sc)}
+.secd .cnt{font-size:13px;font-weight:600;color:var(--muted)}
+.secd .cnt::after{content:" +";color:var(--ink)}
+.secd[open] .cnt::after{content:" −"}
+.secd .secb{padding:0 0 32px 72px}
+.secd .abs{font-size:18px;margin:0 0 18px;padding:16px 18px;background:#f6f5f3;border-left:3px solid var(--sc)}
+.secd .none{color:var(--muted);margin:0 0 12px}
+.essay{max-width:720px;padding:48px 0 72px}
+.essay h2{font-family:var(--f-brand);font-weight:800;font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;line-height:1.1;margin:36px 0 12px}
+.essay h2:first-child{margin-top:0}
+.essay p,.essay li{font-size:19px;line-height:1.6}
+.essay p{margin:0 0 14px}
+.essay strong{color:var(--accent)}
+.essay ul{padding-left:22px;margin:0 0 14px}
+.essay .sign{margin:28px 0 8px;font-weight:600}
+.levelist{list-style:none;padding:0!important}
+.levelist li{display:grid;gap:2px;padding:12px 0;border-bottom:1px solid var(--line)}
+.levelist b{font-family:var(--f-brand);font-size:20px}
+.levelist span{color:var(--muted);font-size:17px}
+@media (max-width:900px){.comp{grid-template-columns:1fr;gap:24px}.comp>.lab{margin-bottom:-12px}}
+@media (max-width:560px){
+  .comp .ctext p{font-size:18px}
+  .leve ul{flex-direction:row;flex-wrap:wrap}
+  .leva{font-size:13px;padding:7px 12px}
+  .secd summary{grid-template-columns:44px 1fr auto}
+  .secd h3{font-size:21px}
+  .secd .secb{padding:0 0 24px 0}
+  .essay p,.essay li{font-size:17px}
+  .arch .w{white-space:normal;text-align:right}
+}
+@media (max-width:430px){.top .brand{font-size:16px}.nav{gap:12px;font-size:13px}}
